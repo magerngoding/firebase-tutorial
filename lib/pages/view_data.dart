@@ -1,16 +1,17 @@
 // ignore_for_file: camel_case_types, prefer_typing_uninitialized_variables, prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:flutter/material.dart';
 
-class HomePage extends StatefulWidget {
-  HomePage({Key? key}) : super(key: key);
+class ViewDataPage extends StatefulWidget {
+  ViewDataPage({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<ViewDataPage> createState() => _ViewDataPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _ViewDataPageState extends State<ViewDataPage> {
   Future<QuerySnapshot<Map<String, dynamic>>> getRakData() async {
     // Durasi
     await Future.delayed(Duration(seconds: 2));
@@ -31,7 +32,7 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     for (var doc in snapshot.data!.docs)
                       Text(
-                        doc['penulis'],
+                        doc['penulis'] + ' : ' + doc['judul_buku'],
                         style: TextStyle(
                           fontSize: 16.0,
                           fontWeight: FontWeight.bold,

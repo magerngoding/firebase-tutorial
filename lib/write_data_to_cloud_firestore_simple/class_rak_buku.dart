@@ -1,20 +1,23 @@
 import 'dart:convert';
-import 'dart:js_interop';
 
-class ClassRakBuku {
+ClassBuku classBuku(String str) => ClassBuku.fromJson(json.decode(str));
+
+String classBukuToJson(ClassBuku data) => json.encode(data.toJSon());
+
+class ClassBuku {
   final String penulis;
   final String judulBuku;
   final DateTime tanggalTerbit;
   final int jumlahStokBuku;
 
-  ClassRakBuku({
+  ClassBuku({
     required this.penulis,
     required this.judulBuku,
     required this.tanggalTerbit,
     required this.jumlahStokBuku,
   });
 
-  factory ClassRakBuku.fromJson(Map<String, dynamic> json) => ClassRakBuku(
+  factory ClassBuku.fromJson(Map<String, dynamic> json) => ClassBuku(
         penulis: json["penulis"],
         judulBuku: json["judul_buku"],
         tanggalTerbit: DateTime.parse(json["tanggal_terbit"]),
